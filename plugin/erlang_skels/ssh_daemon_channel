@@ -1,0 +1,66 @@
+-module($MODULENAME).
+
+-behaviour(ssh_daemon_channel).
+
+%% ssh_daemon_channel callbacks
+-export([init/1,
+         handle_msg/2,
+         handle_ssh_msg/2,
+         terminate/2]).
+
+-record(state, {}).
+
+%%%===================================================================
+%%% ssh_daemon_channel callbacks
+%%%===================================================================
+
+%%--------------------------------------------------------------------
+%% @private
+%% @doc
+%% Makes necessary initializations and returns
+%% the initial channel state if the initializations succeed.
+%% 
+%% @spec init(Args) -> {ok, State}
+%% @end
+%%--------------------------------------------------------------------
+init([]) ->
+    {ok, #state{}}.
+
+%%--------------------------------------------------------------------
+%% @private
+%% @doc
+%% Handle other messages than ssh connection protocol,
+%% call or cast messages sent to the channel.
+%% 
+%% @spec handle_msg(Msg, State) -> {ok, State} | {stop, ChannelId, State}
+%% @end
+%%--------------------------------------------------------------------
+handle_msg(_Msg, State) ->
+    {ok, State}.
+
+%%--------------------------------------------------------------------
+%% @private
+%% @doc
+%% Handles SSH connection protocol messages that may need service specific attention.
+%% The following message is completely taken care of by the SSH channel behavior
+%% 
+%% @spec handle_ssh_msg(Msg, State) -> {ok, State} | {stop, ChannelId, State}
+%% @end
+%%--------------------------------------------------------------------
+handle_ssh_msg(_Msg, State) ->
+    {ok, State}.
+
+%%--------------------------------------------------------------------
+%% @private
+%% @doc
+%% This function is called by a channel process when it is about to terminate
+%% 
+%% @spec terminate(Reason, State) -> void().
+%% @end
+%%--------------------------------------------------------------------
+terminate(_Reason, _State) ->
+    ok.
+
+%%%===================================================================
+%%% Internal functions
+%%%===================================================================

@@ -51,9 +51,11 @@ function s:SubstituteField(name, value)
 	execute '%substitute/\$' . toupper(a:name) . '/' . a:value . '/'
 endfunction
 
-command ErlangApplication silent call s:LoadSkeleton('application')
-command ErlangSupervisor  silent call s:LoadSkeleton('supervisor')
-command ErlangGenServer   silent call s:LoadSkeleton('gen_server')
-command ErlangGenFsm      silent call s:LoadSkeleton('gen_fsm')
-command ErlangGenEvent    silent call s:LoadSkeleton('gen_event')
-command ErlangCommonTest  silent call s:LoadSkeleton('common_test')
+command ErlangApplication       silent call s:LoadSkeleton('application')
+command ErlangSupervisor        silent call s:LoadSkeleton('supervisor')
+command ErlangGenServer         silent call s:LoadSkeleton('gen_server')
+command ErlangGenFsm            silent call s:LoadSkeleton('gen_fsm')
+command ErlangGenEvent          silent call s:LoadSkeleton('gen_event')
+command ErlangCommonTest        silent call s:LoadSkeleton('common_test')
+command ErlangSSHDaemonChannel  silent call s:LoadSkeleton('ssh_daemon_channel')
+command ErlangHeaderModule      silent call s:LoadSkeleton('header_module')
